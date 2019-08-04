@@ -1,6 +1,8 @@
 # Chrome DevTools Extension using React.js
 
-A description of the app...
+This template was based on the post posted here:
+https://github.com/yurist38/chromeDevToolsReactBoilerplate
+https://medium.com/@yuridrabik/create-chrome-devtools-extension-using-react-js-1b8e16e8dc72
 
 ### Install dependencies ###
 
