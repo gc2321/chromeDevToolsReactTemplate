@@ -12,8 +12,8 @@ class App extends Component {
     this.setState({ startTime: 0 });
   }
 
-  onFinishRecording (startTime) {
-    this.setState({ startRecordTime: startTime });
+  onFinishRecording (time) {
+    this.setState({ startRecordTime: time });
   }
 
   render() {
