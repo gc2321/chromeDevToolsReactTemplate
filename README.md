@@ -13,7 +13,7 @@ $ npm i
 ### Build ###
 
 ```
-$ npm run build
+$ yarn build
 ```
 
 ### Install into your Google Chrome browser ###

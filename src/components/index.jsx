@@ -1,29 +1,34 @@
 import React, { Component } from 'react';
 import { render } from 'react-dom';
-import ColorPicker from './ColorPicker/ColorPicker';
+import Stopwatch from './Stopwatch';
 
 class App extends Component {
   constructor() {
     super();
-    this.state = {
-      color: '#cccccc'
-    }
+    this.state = { startTime: 0, startRecordTime: 0 }
   }
 
-  onChangeColor(color) {
-    this.setState({color: color.hex});
+  componentDidMount() {
+    this.setState({ startTime: 0 });
+  }
+
+  onFinishRecording (startTime) {
+    this.setState({ startRecordTime: startTime });
   }
 
   render() {
     return (
-      <ColorPicker
-        color={this.state.color}
-        onChangeColor={this.onChangeColor.bind(this)}
-      />
-    );
+      <div className="ui container">
+        <br />
+        <center>
+          <div className="ui compact segment">
+            <Stopwatch onFinishRecording={this.onFinishRecording.bind(this)} />
+          </div>
+        </center>
+      </div>
+    )
   }
 }
-
 
 render(
   <App />,
