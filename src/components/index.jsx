@@ -12,11 +12,23 @@ class App extends Component {
     this.setState({ startTime: 0 });
   }
 
-  onFinishRecording (time) {
+  onFinishRecording(time) {
     this.setState({ startRecordTime: time });
   }
 
+  writeToConsole() {
+    chrome.devtools.inspectedWindow.eval('console.clear()');
+    chrome.devtools.inspectedWindow.eval('console.log("test12345")');
+    var currentdate = new Date().toLocaleTimeString();
+   
+    chrome.devtools.inspectedWindow.eval('console.log("' + currentdate + '")');
+
+  }
+
   render() {
+
+    this.writeToConsole();
+
     return (
       <div className="ui container">
         <br />
