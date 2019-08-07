@@ -17,11 +17,11 @@ class App extends Component {
   }
 
   writeToConsole() {
-    chrome.devtools.inspectedWindow.eval('console.clear()');
+    //chrome.devtools.inspectedWindow.eval('console.clear()');
     chrome.devtools.inspectedWindow.eval('console.log("test12345")');
     var currentdate = new Date().toLocaleTimeString();
    
-    chrome.devtools.inspectedWindow.eval('console.log("' + currentdate + '")');
+    chrome.devtools.inspectedWindow.eval('console.log("from index.jsx' + currentdate + '")');
 
   }
 
