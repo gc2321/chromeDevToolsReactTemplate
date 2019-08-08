@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import { render } from 'react-dom';
 import Stopwatch from './Stopwatch';
+// import Highcharts from 'highcharts';
+// import HighchartsReact from 'highcharts-react-official';
+import Graph from './Graph';
 
 class App extends Component {
   constructor() {
@@ -20,7 +23,7 @@ class App extends Component {
     //chrome.devtools.inspectedWindow.eval('console.clear()');
     chrome.devtools.inspectedWindow.eval('console.log("test12345")');
     var currentdate = new Date().toLocaleTimeString();
-   
+
     chrome.devtools.inspectedWindow.eval('console.log("from index.jsx' + currentdate + '")');
 
   }
@@ -28,13 +31,28 @@ class App extends Component {
   render() {
 
     this.writeToConsole();
-
+    // const options = {
+    //   chart: {
+    //       type: 'spline'
+    //   },
+    //   title: {
+    //       text: 'My chart'
+    //   },
+    //   series: [
+    //       {
+    //           data: [1, 2, 1, 4, 3, 6]
+    //       }
+    //   ]
+    //};
     return (
       <div className="ui container">
         <br />
         <center>
           <div className="ui compact segment">
             <Stopwatch onFinishRecording={this.onFinishRecording.bind(this)} />
+          </div>
+          <div className="ui container">
+          <Graph data={[]} />
           </div>
         </center>
       </div>
