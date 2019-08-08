@@ -8,17 +8,47 @@ class Graph extends Component {
     }
 
     render() {
-
         const options = {
             chart: {
-                type: 'spline'
+                type: "bar"
             },
             title: {
-                text: 'My chart'
+                text: ""
+            },
+            xAxis: {
+                categories: ["A", "B", "C", "D", "E"],
+                title: {
+                    text: null
+                }
+            },
+            yAxis: {
+                min: 0,
+                title: {
+                    text: "",
+                    align: "high"
+                },
+                labels: {
+                    overflow: "justify"
+                }
+            },
+            tooltip: {
+                valueSuffix: " msec"
+            },
+            plotOptions: {
+                bar: {
+                    dataLabels: {
+                        enabled: true
+                    }
+                }
+            },
+            credits: {
+                enabled: false
             },
             series: [
                 {
-                    data: [1, 2, 1, 4, 3, 6]
+                    name: "",
+                    data: [107, 31, 635, 203, 2],
+                    showInLegend: false
                 }
             ]
         };
