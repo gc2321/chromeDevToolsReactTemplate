@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { render } from 'react-dom';
 import Stopwatch from './Stopwatch';
+import Graph from './Graph';
 
 class App extends Component {
   constructor() {
@@ -17,24 +18,31 @@ class App extends Component {
   }
 
   writeToConsole() {
-    //chrome.devtools.inspectedWindow.eval('console.clear()');
-    chrome.devtools.inspectedWindow.eval('console.log("test12345")');
+    chrome.devtools.inspectedWindow.eval('console.clear()');
+    //chrome.devtools.inspectedWindow.eval('console.log("test12345")');
     var currentdate = new Date().toLocaleTimeString();
-   
-    chrome.devtools.inspectedWindow.eval('console.log("from index.jsx' + currentdate + '")');
+    chrome.devtools.inspectedWindow.eval('console.log("from index.jsx ' + currentdate + '")');
+
+    chrome.devtools.inspectedWindow.eval('getObj();', function (obj){
+        console.log(obj);
+    });
+    //console.log(obj);
 
   }
 
   render() {
 
     this.writeToConsole();
-
+    
     return (
       <div className="ui container">
         <br />
         <center>
           <div className="ui compact segment">
             <Stopwatch onFinishRecording={this.onFinishRecording.bind(this)} />
+          </div>
+          <div className="ui container">
+          <Graph data={[]} />
           </div>
         </center>
       </div>

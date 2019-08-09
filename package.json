@@ -33,14 +33,16 @@
     "postcss-cssnext": "^3.0.2",
     "postcss-loader": "^2.0.6",
     "prop-types": "^15.5.10",
-    "react": "^15.6.1",
+    "react": "^16.4.2",
     "react-color": "^2.13.4",
-    "react-dom": "^15.6.1",
+    "react-dom": "^16.4.2",
     "sass-loader": "^6.0.6",
     "style-loader": "^0.18.2",
     "webpack": "^3.0.0"
   },
   "dependencies": {
+    "highcharts": "^7.1.2",
+    "highcharts-react-official": "^2.2.2",
     "jquery": "^3.4.1",
     "semantic-ui-react": "^0.87.3"
   }
