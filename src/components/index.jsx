@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import { render } from 'react-dom';
 import Stopwatch from './Stopwatch';
-// import Highcharts from 'highcharts';
-// import HighchartsReact from 'highcharts-react-official';
 import Graph from './Graph';
 
 class App extends Component {
@@ -20,30 +18,22 @@ class App extends Component {
   }
 
   writeToConsole() {
-    //chrome.devtools.inspectedWindow.eval('console.clear()');
-    chrome.devtools.inspectedWindow.eval('console.log("test12345")');
+    chrome.devtools.inspectedWindow.eval('console.clear()');
+    //chrome.devtools.inspectedWindow.eval('console.log("test12345")');
     var currentdate = new Date().toLocaleTimeString();
+    chrome.devtools.inspectedWindow.eval('console.log("from index.jsx ' + currentdate + '")');
 
-    chrome.devtools.inspectedWindow.eval('console.log("from index.jsx' + currentdate + '")');
+    chrome.devtools.inspectedWindow.eval('getObj();', function (obj){
+        console.log(obj);
+    });
+    //console.log(obj);
 
   }
 
   render() {
 
     this.writeToConsole();
-    // const options = {
-    //   chart: {
-    //       type: 'spline'
-    //   },
-    //   title: {
-    //       text: 'My chart'
-    //   },
-    //   series: [
-    //       {
-    //           data: [1, 2, 1, 4, 3, 6]
-    //       }
-    //   ]
-    //};
+    
     return (
       <div className="ui container">
         <br />
