@@ -53,9 +53,17 @@ class Graph extends Component {
             ]
         };
 
-        //const {keys, values} = this.props.data;
-        //options.xAxis.categories = this.props.datakeys;
-        //options.series[0].data = values;
+        let data = this.props.data;
+        let categories = [];
+        let values = [];
+
+        data.forEach(function (item, i) {
+            categories[i] = item.name;
+            values[i] = item.value;
+          });
+
+        options.xAxis.categories = categories;
+        options.series[0].data = values;
 
         return (
             <div >

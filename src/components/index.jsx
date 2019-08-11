@@ -16,10 +16,12 @@ class App extends Component {
   onFinishRecording(time) {
     this.setState({ startRecordTime: time});
     //console.log('the startRecordTime is ' + this.state.startRecordTime);
-    var response = this.executeCode();
+    let response = this.executeCode();
     //console.log(response);
     //this.setState({result: [...this.state.results, response]});
-    this.setState({result: response});
+    let results = this.state.results;
+    results.concat(response);
+    this.setState({result});
     console.log(this.state.results.length);
   }
 
@@ -42,6 +44,28 @@ class App extends Component {
       
     const { results } = this.state;
     console.log('array length in render is ' + results.length);
+    let obj = [
+      {
+        name: "A",
+        value: 123
+      },
+      {
+        name: "B",
+        value: 12
+      },
+      {
+        name: "C",
+        value: 444
+      },
+      {
+        name: "D",
+        value: 44
+      },
+      {
+        name: "E",
+        value: 9
+      }
+    ];
 
     return (
       <div className="ui container">
@@ -53,7 +77,8 @@ class App extends Component {
         </center>
       
         {      
-          results.length != 0 ? <Graph data={results}/>: null
+          //results.length != 0 ? <Graph data={results}/>: null
+          <Graph data={obj}/>
         }
       
       </div>
