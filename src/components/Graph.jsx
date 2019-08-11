@@ -16,7 +16,7 @@ class Graph extends Component {
                 text: ""
             },
             xAxis: {
-                categories: ["A", "B", "C", "D", "E"],
+                categories: [],
                 title: {
                     text: null
                 }
@@ -47,7 +47,7 @@ class Graph extends Component {
             series: [
                 {
                     name: "",
-                    data: [107, 31, 635, 203, 2],
+                    data: [],
                     showInLegend: false
                 }
             ]
@@ -68,7 +68,7 @@ class Graph extends Component {
         options.series[0].data = values;
 
         return (
-            <div >
+            <div class='ui segment'>
                 <HighchartsReact highcharts={Highcharts} options={options} />
             </div>
         )
