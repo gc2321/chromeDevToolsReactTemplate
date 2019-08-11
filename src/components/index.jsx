@@ -19,6 +19,10 @@ class App extends Component {
     this.executeCode();
   }
 
+  onReset(){
+    this.setState({ startTime: 0, startRecordTime: 0, results: [] });
+  }
+
   executeCode() {
     chrome.devtools.inspectedWindow.eval('console.clear()');
     //chrome.devtools.inspectedWindow.eval('console.log("test12345")');
@@ -27,22 +31,23 @@ class App extends Component {
 
     let that = this;
     chrome.devtools.inspectedWindow.eval('getObj();', function (obj) {
-      let response = obj.slice(0);
-      that.setState({results : response});
+      if(obj!=null && obj.length > 0){
+        let response = obj.slice(0);
+        that.setState({results : response});
+      }    
     });
   }
 
   render() {
 
     const { results } = this.state;
-    console.log('array length in render is ' + results.length);
-   
+    
     return (
       <div className="ui container">
         <br />
         <center>
           <div className="ui compact segment">
-            <Stopwatch onFinishRecording={this.onFinishRecording.bind(this)} />
+            <Stopwatch onFinishRecording={this.onFinishRecording.bind(this)} onReset={this.onReset.bind(this)} />
           </div>
         </center>
 

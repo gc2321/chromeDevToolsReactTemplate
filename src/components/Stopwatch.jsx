@@ -13,9 +13,11 @@ class Stopwatch extends Component {
     resetTimer() {
         clearInterval(this.timer);
         this.setState({ isOn: false, time: 0 });
+        this.props.onReset();
     }
 
     handleStartRecording() {
+        this.props.onReset();
         this.setState({ isOn: true, startRecordTime: Date.now() });
         this.timer = setInterval(() => this.setState({
             time: Date.now() - this.state.startRecordTime
