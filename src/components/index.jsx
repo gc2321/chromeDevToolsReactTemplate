@@ -14,15 +14,9 @@ class App extends Component {
   }
 
   onFinishRecording(time) {
-    this.setState({ startRecordTime: time});
+    this.setState({ startRecordTime: time });
     //console.log('the startRecordTime is ' + this.state.startRecordTime);
-    let response = this.executeCode();
-    //console.log(response);
-    //this.setState({result: [...this.state.results, response]});
-    let results = this.state.results;
-    results.concat(response);
-    this.setState({result});
-    console.log(this.state.results.length);
+    this.executeCode();
   }
 
   executeCode() {
@@ -30,43 +24,19 @@ class App extends Component {
     //chrome.devtools.inspectedWindow.eval('console.log("test12345")');
     //var currentdate = new Date().toLocaleTimeString();
     //chrome.devtools.inspectedWindow.eval('console.log("from index.jsx ' + currentdate + '")');
-   
-    var response = [];
+
+    let that = this;
     chrome.devtools.inspectedWindow.eval('getObj();', function (obj) {
-      for(var i=0; i < obj.length; i++){
-        response[i] = obj[i];  
-      }
+      let response = obj.slice(0);
+      that.setState({results : response});
     });
-     return response;  
   }
 
   render() {
-      
+
     const { results } = this.state;
     console.log('array length in render is ' + results.length);
-    let obj = [
-      {
-        name: "A",
-        value: 123
-      },
-      {
-        name: "B",
-        value: 12
-      },
-      {
-        name: "C",
-        value: 444
-      },
-      {
-        name: "D",
-        value: 44
-      },
-      {
-        name: "E",
-        value: 9
-      }
-    ];
-
+   
     return (
       <div className="ui container">
         <br />
@@ -75,12 +45,11 @@ class App extends Component {
             <Stopwatch onFinishRecording={this.onFinishRecording.bind(this)} />
           </div>
         </center>
-      
-        {      
-          //results.length != 0 ? <Graph data={results}/>: null
-          <Graph data={obj}/>
+
+        {
+          results.length != 0 ? <Graph data={results}/>: null         
         }
-      
+
       </div>
     )
   }
