@@ -6,7 +6,7 @@ import Graph from './Graph';
 class App extends Component {
   constructor() {
     super();
-    this.state = { startTime: 0, startRecordTime: 0 }
+    this.state = { startTime: 0, startRecordTime: 0, results: [] }
   }
 
   componentDidMount() {
@@ -14,26 +14,35 @@ class App extends Component {
   }
 
   onFinishRecording(time) {
-    this.setState({ startRecordTime: time });
+    this.setState({ startRecordTime: time});
+    //console.log('the startRecordTime is ' + this.state.startRecordTime);
+    var response = this.executeCode();
+    //console.log(response);
+    //this.setState({result: [...this.state.results, response]});
+    this.setState({result: response});
+    console.log(this.state.results.length);
   }
 
-  writeToConsole() {
+  executeCode() {
     chrome.devtools.inspectedWindow.eval('console.clear()');
     //chrome.devtools.inspectedWindow.eval('console.log("test12345")');
-    var currentdate = new Date().toLocaleTimeString();
-    chrome.devtools.inspectedWindow.eval('console.log("from index.jsx ' + currentdate + '")');
-
-    chrome.devtools.inspectedWindow.eval('getObj();', function (obj){
-        console.log(obj);
+    //var currentdate = new Date().toLocaleTimeString();
+    //chrome.devtools.inspectedWindow.eval('console.log("from index.jsx ' + currentdate + '")');
+   
+    var response = [];
+    chrome.devtools.inspectedWindow.eval('getObj();', function (obj) {
+      for(var i=0; i < obj.length; i++){
+        response[i] = obj[i];  
+      }
     });
-    //console.log(obj);
-
+     return response;  
   }
 
   render() {
+      
+    const { results } = this.state;
+    console.log('array length in render is ' + results.length);
 
-    this.writeToConsole();
-    
     return (
       <div className="ui container">
         <br />
@@ -41,10 +50,12 @@ class App extends Component {
           <div className="ui compact segment">
             <Stopwatch onFinishRecording={this.onFinishRecording.bind(this)} />
           </div>
-          <div className="ui container">
-          <Graph data={[]} />
-          </div>
         </center>
+      
+        {      
+          results.length != 0 ? <Graph data={results}/>: null
+        }
+      
       </div>
     )
   }

@@ -53,6 +53,10 @@ class Graph extends Component {
             ]
         };
 
+        //const {keys, values} = this.props.data;
+        //options.xAxis.categories = this.props.datakeys;
+        //options.series[0].data = values;
+
         return (
             <div >
                 <HighchartsReact highcharts={Highcharts} options={options} />
