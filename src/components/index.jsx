@@ -29,13 +29,13 @@ class App extends Component {
     //var currentdate = new Date().toLocaleTimeString();
     //chrome.devtools.inspectedWindow.eval('console.log("from index.jsx ' + currentdate + '")');
 
-    let that = this;
-    chrome.devtools.inspectedWindow.eval('getObj();', function (obj) {
-      if(obj!=null && obj.length > 0){
-        let response = obj.slice(0);
-        that.setState({results : response});
-      }    
-    });
+    // let that = this;
+    // chrome.devtools.inspectedWindow.eval('getObj();', function (obj) {
+    //   if(obj!=null && obj.length > 0){
+    //     let response = obj.slice(0);
+    //     that.setState({results : response});
+    //   }    
+    // });
   }
 
   render() {
@@ -52,7 +52,8 @@ class App extends Component {
         </center>
 
         {
-          results.length != 0 ? <Graph data={results}/>: null         
+          // results.length != 0 ? <Graph data={results}/>: null       
+          <Graph data={results}/>  
         }
 
       </div>
