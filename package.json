@@ -28,7 +28,7 @@
     "gulp": "https://github.com/gulpjs/gulp.git#master",
     "gulp-rm": "^1.0.4",
     "moment": "^2.18.1",
-    "node-sass": "^4.5.3",
+    "node-sass": "^7.0.0",
     "postcss": "^6.0.6",
     "postcss-cssnext": "^3.0.2",
     "postcss-loader": "^2.0.6",
